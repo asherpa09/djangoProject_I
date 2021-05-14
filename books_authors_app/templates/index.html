@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books & Authors </title>
+</head>
+<body>
+    <h2>Add a Book</h2>
+    <form action="{% url 'createBook' %}" method="POST">
+        {% csrf_token %}
+        <label for="title"> Title: </label>
+        <input type="text" name="title" placeholder="Title">
+        <label for="description"> Description: </label>
+        <textarea name="description" placeholder="Describe"></textarea>
+        <button>Add</button>
+    </form>
+
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Action</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+          <td>{book.id}</td>
+          <td>{book.title}/<td>
+          <td></td>
+          {% endfor %}
+        </tr>
+      </table> 
+</body>
+</html>
